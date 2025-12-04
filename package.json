@@ -1,0 +1,25 @@
+{
+  "name": "livrais",
+  "version": "1.0.0",
+  "description": "Plateforme de livraison collaborative pour la Guyane",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd mobile && expo start",
+    "android": "cd mobile && expo start --android",
+    "ios": "cd mobile && expo start --ios",
+    "web": "cd mobile && expo start --web",
+    "lint": "cd mobile && eslint .",
+    "test": "cd mobile && jest",
+    "supabase:start": "cd supabase && supabase start",
+    "supabase:stop": "cd supabase && supabase stop"
+  },
+  "keywords": [
+    "delivery",
+    "guyane",
+    "collaborative",
+    "livraison",
+    "covoiturage"
+  ],
+  "author": "",
+  "license": "MIT"
+}
