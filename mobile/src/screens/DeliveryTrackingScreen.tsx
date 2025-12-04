@@ -9,6 +9,12 @@ import {
 } from 'react-native';
 import { StatusBadge } from '@/components/StatusBadge';
 import { DeliveryStatus } from '@/types/database';
+import { supabase } from '@/services/supabase';
+import {
+  subscribeToDeliveryLocation,
+  calculateDistance,
+  calculateETA,
+} from '@/services/gpsTracking';
 
 interface DeliveryTrackingScreenProps {
   route: any;
@@ -21,48 +27,92 @@ export default function DeliveryTrackingScreen({
 }: DeliveryTrackingScreenProps) {
   const { deliveryId } = route.params;
 
-  // Mock data - à remplacer par les vraies données
-  const [delivery, setDelivery] = useState({
-    id: deliveryId,
-    status: 'in_progress' as DeliveryStatus,
-    pickup_address: 'Cayenne Centre',
-    delivery_address: 'Matoury',
-    customer: {
-      full_name: 'Jean Dupont',
-      phone: '+594 694 12 34 56',
-      avatar_url: null,
-    },
-    deliverer: {
-      full_name: 'Marie Martin',
-      phone: '+594 694 98 76 54',
-      avatar_url: null,
-      rating: 4.8,
-    },
-    total_amount: 55,
-    estimated_arrival: new Date(Date.now() + 25 * 60 * 1000), // +25 minutes
-    started_at: new Date(Date.now() - 10 * 60 * 1000), // -10 minutes
-  });
+  const [delivery, setDelivery] = useState<any>(null);
+  const [delivererLocation, setDelivererLocation] = useState<{
+    latitude: number;
+    longitude: number;
+  } | null>(null);
+  const [progress, setProgress] = useState(0);
+  const [eta, setEta] = useState(0);
 
-  const [progress, setProgress] = useState(40); // 0-100%
-  const [eta, setEta] = useState(25); // minutes
-
-  // Simuler la progression (à remplacer par le vrai tracking GPS)
+  // Charger les données de la livraison
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setDelivery({ ...delivery, status: 'completed' });
-          return 100;
-        }
-        return Math.min(prev + 2, 100);
-      });
+    loadDeliveryData();
+  }, [deliveryId]);
 
-      setEta((prev) => Math.max(0, prev - 1));
-    }, 3000); // Mise à jour toutes les 3 secondes
+  // Écouter les mises à jour de position en temps réel
+  useEffect(() => {
+    if (!deliveryId) return;
 
-    return () => clearInterval(interval);
-  }, []);
+    const unsubscribe = subscribeToDeliveryLocation(deliveryId, (location) => {
+      setDelivererLocation(location);
+    });
+
+    return () => unsubscribe();
+  }, [deliveryId]);
+
+  // Calculer le progrès et l'ETA quand la position change
+  useEffect(() => {
+    if (!delivery || !delivererLocation) return;
+
+    calculateProgressAndETA();
+  }, [delivererLocation, delivery]);
+
+  const loadDeliveryData = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('deliveries')
+        .select(`
+          *,
+          request:delivery_requests(*),
+          deliverer:profiles!deliveries_deliverer_id_fkey(*),
+          customer:profiles!deliveries_customer_id_fkey(*)
+        `)
+        .eq('id', deliveryId)
+        .single();
+
+      if (error) throw error;
+
+      setDelivery(data);
+    } catch (error: any) {
+      Alert.alert('Erreur', 'Impossible de charger les données de la livraison');
+      console.error(error);
+    }
+  };
+
+  const calculateProgressAndETA = () => {
+    if (!delivery || !delivererLocation) return;
+
+    const pickupLocation = delivery.request.pickup_location;
+    const deliveryLocation = delivery.request.delivery_location;
+
+    // Distance totale
+    const totalDistance = calculateDistance(
+      pickupLocation.latitude,
+      pickupLocation.longitude,
+      deliveryLocation.latitude,
+      deliveryLocation.longitude
+    );
+
+    // Distance restante
+    const remainingDistance = calculateDistance(
+      delivererLocation.latitude,
+      delivererLocation.longitude,
+      deliveryLocation.latitude,
+      deliveryLocation.longitude
+    );
+
+    // Calcul du progrès (0-100%)
+    const progressPercent = Math.max(
+      0,
+      Math.min(100, ((totalDistance - remainingDistance) / totalDistance) * 100)
+    );
+    setProgress(Math.round(progressPercent));
+
+    // Calcul de l'ETA
+    const etaMinutes = calculateETA(remainingDistance);
+    setEta(etaMinutes);
+  };
 
   const getProgressSteps = () => {
     switch (delivery.status) {
