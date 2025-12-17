@@ -93,7 +93,7 @@ export default function Map({
         />
         
         {onLocationSelect && <MapClickHandler onLocationSelect={onLocationSelect} />}
-        <FlyToLocation center={mapCenter} />
+        <FlyToLocation center={mapCenter} zoom={mapZoom} />
         
         {/* User location */}
         {userLocation && (
