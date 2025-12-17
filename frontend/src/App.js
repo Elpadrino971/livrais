@@ -1,53 +1,77 @@
-import { useEffect } from "react";
-import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import "./i18n";
+import "./App.css";
+import { Toaster } from "./components/ui/sonner";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+// Pages
+import HomePage from "./pages/HomePage";
+import CreateRequestPage from "./pages/CreateRequestPage";
+import RequestDetailPage from "./pages/RequestDetailPage";
+import DelivererModePage from "./pages/DelivererModePage";
+import HistoryPage from "./pages/HistoryPage";
+import SettingsPage from "./pages/SettingsPage";
+import PaymentSuccessPage from "./pages/PaymentSuccessPage";
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
+// Components
+import BottomNav from "./components/BottomNav";
+
+function AppContent() {
+  const location = useLocation();
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem("theme");
+    return saved || "system";
+  });
 
   useEffect(() => {
-    helloWorldApi();
-  }, []);
+    const root = window.document.documentElement;
+    
+    if (theme === "system") {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      root.classList.toggle("dark", systemTheme === "dark");
+    } else {
+      root.classList.toggle("dark", theme === "dark");
+    }
+  }, [theme]);
+
+  // Listen for system theme changes
+  useEffect(() => {
+    if (theme !== "system") return;
+    
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handler = (e) => {
+      document.documentElement.classList.toggle("dark", e.matches);
+    };
+    
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, [theme]);
+
+  const hideNav = location.pathname === "/payment-success";
 
   return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
+    <div className="min-h-screen bg-background">
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/create" element={<CreateRequestPage />} />
+        <Route path="/request/:id" element={<RequestDetailPage />} />
+        <Route path="/deliverer" element={<DelivererModePage />} />
+        <Route path="/history" element={<HistoryPage />} />
+        <Route path="/settings" element={<SettingsPage setTheme={setTheme} currentTheme={theme} />} />
+        <Route path="/payment-success" element={<PaymentSuccessPage />} />
+      </Routes>
+      
+      {!hideNav && <BottomNav />}
+      <Toaster richColors position="top-center" />
     </div>
   );
-};
+}
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   );
 }
 
