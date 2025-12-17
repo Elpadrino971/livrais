@@ -13,6 +13,7 @@ import HistoryPage from "./pages/HistoryPage";
 import SettingsPage from "./pages/SettingsPage";
 import PaymentSuccessPage from "./pages/PaymentSuccessPage";
 import TrackingPage from "./pages/TrackingPage";
+import CommunityPage from "./pages/CommunityPage";
 
 // Components
 import BottomNav from "./components/BottomNav";
