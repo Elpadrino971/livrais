@@ -568,6 +568,92 @@ async def estimate_delivery_price(request: PriceEstimationRequest):
         "deliverer_payout": round(price * (1 - PLATFORM_COMMISSION), 2)
     }
 
+# --- File Upload ---
+
+@api_router.post("/upload")
+async def upload_file(file: UploadFile = File(...)):
+    """Upload image file and return URL"""
+    try:
+        # Generate unique filename
+        ext = file.filename.split(".")[-1] if "." in file.filename else "jpg"
+        filename = f"{uuid.uuid4()}.{ext}"
+        filepath = UPLOAD_DIR / filename
+        
+        # Save file
+        content = await file.read()
+        with open(filepath, "wb") as f:
+            f.write(content)
+        
+        return {"filename": filename, "url": f"/api/uploads/{filename}"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@api_router.get("/uploads/{filename}")
+async def get_upload(filename: str):
+    """Serve uploaded file"""
+    from fastapi.responses import FileResponse
+    filepath = UPLOAD_DIR / filename
+    if not filepath.exists():
+        raise HTTPException(status_code=404, detail="File not found")
+    return FileResponse(filepath)
+
+# --- GPS Tracking ---
+
+class LocationUpdate(BaseModel):
+    deliverer_id: str
+    lat: float
+    lng: float
+    request_id: Optional[str] = None
+
+@api_router.post("/tracking/update")
+async def update_location(update: LocationUpdate):
+    """Update deliverer location for real-time tracking"""
+    # Update deliverer location
+    await db.deliverers.update_one(
+        {"id": update.deliverer_id},
+        {"$set": {
+            "current_location": {"lat": update.lat, "lng": update.lng},
+            "last_location_update": datetime.now(timezone.utc).isoformat()
+        }}
+    )
+    
+    # If tracking a specific delivery, store tracking history
+    if update.request_id:
+        tracking_point = {
+            "id": str(uuid.uuid4()),
+            "request_id": update.request_id,
+            "deliverer_id": update.deliverer_id,
+            "lat": update.lat,
+            "lng": update.lng,
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
+        await db.tracking_history.insert_one(tracking_point)
+    
+    return {"status": "updated"}
+
+@api_router.get("/tracking/{request_id}")
+async def get_tracking(request_id: str):
+    """Get current location and tracking history for a delivery"""
+    request = await db.delivery_requests.find_one({"id": request_id}, {"_id": 0})
+    if not request:
+        raise HTTPException(status_code=404, detail="Request not found")
+    
+    deliverer = None
+    if request.get("deliverer_id"):
+        deliverer = await db.deliverers.find_one({"id": request["deliverer_id"]}, {"_id": 0})
+    
+    # Get recent tracking points
+    tracking_points = await db.tracking_history.find(
+        {"request_id": request_id}, {"_id": 0}
+    ).sort("timestamp", -1).limit(50).to_list(50)
+    
+    return {
+        "request": request,
+        "deliverer": deliverer,
+        "current_location": deliverer.get("current_location") if deliverer else None,
+        "tracking_history": tracking_points
+    }
+
 # =============================================================================
 # APP SETUP
 # =============================================================================
