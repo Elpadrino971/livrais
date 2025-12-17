@@ -58,6 +58,7 @@ function AppContent() {
         <Route path="/create" element={<CreateRequestPage />} />
         <Route path="/request/:id" element={<RequestDetailPage />} />
         <Route path="/tracking/:id" element={<TrackingPage />} />
+        <Route path="/community" element={<CommunityPage />} />
         <Route path="/deliverer" element={<DelivererModePage />} />
         <Route path="/history" element={<HistoryPage />} />
         <Route path="/settings" element={<SettingsPage setTheme={setTheme} currentTheme={theme} />} />
