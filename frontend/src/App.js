@@ -48,7 +48,7 @@ function AppContent() {
     return () => mediaQuery.removeEventListener("change", handler);
   }, [theme]);
 
-  const hideNav = location.pathname === "/payment-success";
+  const hideNav = location.pathname === "/payment-success" || location.pathname.startsWith("/tracking/");
 
   return (
     <div className="min-h-screen bg-background">
@@ -56,6 +56,7 @@ function AppContent() {
         <Route path="/" element={<HomePage />} />
         <Route path="/create" element={<CreateRequestPage />} />
         <Route path="/request/:id" element={<RequestDetailPage />} />
+        <Route path="/tracking/:id" element={<TrackingPage />} />
         <Route path="/deliverer" element={<DelivererModePage />} />
         <Route path="/history" element={<HistoryPage />} />
         <Route path="/settings" element={<SettingsPage setTheme={setTheme} currentTheme={theme} />} />
