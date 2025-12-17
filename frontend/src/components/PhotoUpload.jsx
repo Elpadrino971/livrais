@@ -70,24 +70,74 @@ export default function PhotoUpload({ onUpload, currentPhoto = null, className =
   return (
     <div className={className}>
       {preview ? (
-        <div className="relative rounded-xl overflow-hidden" data-testid="photo-preview">
-          <img 
-            src={preview} 
-            alt="Aperçu" 
-            className="w-full h-48 object-cover"
-          />
-          <button
-            onClick={removePhoto}
-            className="absolute top-2 right-2 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
-            data-testid="remove-photo-btn"
-          >
-            <X className="w-4 h-4" />
-          </button>
+        <div className="relative" data-testid="photo-preview">
+          {/* Thumbnail container */}
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 dark:bg-stone-800 border border-border">
+            {/* Small thumbnail */}
+            <div 
+              className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 cursor-pointer group"
+              onClick={() => setShowZoom(true)}
+            >
+              <img 
+                src={preview} 
+                alt="Aperçu" 
+                className="w-full h-full object-cover"
+              />
+              {/* Zoom overlay on hover */}
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <ZoomIn className="w-5 h-5 text-white" />
+              </div>
+            </div>
+            
+            {/* Info and actions */}
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium text-foreground">Photo ajoutée</p>
+              <p className="text-xs text-muted-foreground">Cliquez pour agrandir</p>
+            </div>
+            
+            {/* Zoom button */}
+            <button
+              onClick={() => setShowZoom(true)}
+              className="p-2 hover:bg-stone-200 dark:hover:bg-stone-700 rounded-full transition-colors"
+              data-testid="zoom-photo-btn"
+            >
+              <ZoomIn className="w-5 h-5 text-muted-foreground" />
+            </button>
+            
+            {/* Remove button */}
+            <button
+              onClick={removePhoto}
+              className="p-2 hover:bg-red-100 dark:hover:bg-red-900/30 rounded-full transition-colors"
+              data-testid="remove-photo-btn"
+            >
+              <X className="w-5 h-5 text-red-500" />
+            </button>
+          </div>
+          
           {uploading && (
-            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-              <Loader2 className="w-8 h-8 text-white animate-spin" />
+            <div className="absolute inset-0 bg-white/80 dark:bg-stone-900/80 rounded-xl flex items-center justify-center">
+              <Loader2 className="w-6 h-6 text-primary animate-spin" />
             </div>
           )}
+          
+          {/* Zoom Dialog */}
+          <Dialog open={showZoom} onOpenChange={setShowZoom}>
+            <DialogContent className="max-w-3xl p-2 bg-black/95">
+              <div className="relative">
+                <img 
+                  src={preview} 
+                  alt="Photo agrandie" 
+                  className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+                />
+                <button
+                  onClick={() => setShowZoom(false)}
+                  className="absolute top-2 right-2 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
       ) : (
         <div
