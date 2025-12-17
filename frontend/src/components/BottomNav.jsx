@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Home, Package, Truck, Clock, Settings } from "lucide-react";
+import { Home, Package, Users, Truck, Settings } from "lucide-react";
 
 export default function BottomNav() {
   const { t } = useTranslation();
@@ -8,8 +8,8 @@ export default function BottomNav() {
   const navItems = [
     { path: "/", icon: Home, label: t("nav.home") },
     { path: "/create", icon: Package, label: t("nav.requests") },
+    { path: "/community", icon: Users, label: "Forum" },
     { path: "/deliverer", icon: Truck, label: t("nav.deliverer") },
-    { path: "/history", icon: Clock, label: t("nav.history") },
     { path: "/settings", icon: Settings, label: t("nav.settings") },
   ];
 
