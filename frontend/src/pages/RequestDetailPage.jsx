@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { toast } from "sonner";
-import { ArrowLeft, MapPin, Clock, Truck, Users, MessageCircle, Star, CreditCard, X, Send, Navigation } from "lucide-react";
+import { ArrowLeft, MapPin, Clock, Truck, Users, MessageCircle, Star, CreditCard, X, Send, Navigation, ZoomIn } from "lucide-react";
 import { Link } from "react-router-dom";
 import Map from "../components/Map";
 import { Button } from "../components/ui/button";
