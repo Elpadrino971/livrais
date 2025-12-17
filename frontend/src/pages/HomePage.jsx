@@ -96,6 +96,13 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-emerald-900/90 to-emerald-900/70" />
         
+        {/* Notification Bell */}
+        <div className="absolute top-4 right-4 z-10">
+          <div className="bg-white/20 backdrop-blur-sm rounded-full">
+            <NotificationBell />
+          </div>
+        </div>
+        
         <div className="relative px-6 pt-12 pb-8">
           <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3 leading-tight">
             {t("home.title")}
