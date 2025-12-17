@@ -191,42 +191,56 @@ export default function CreateRequestPage() {
       {step === 2 && (
         <div className="animate-fade-in">
           <div className="p-4 space-y-4">
+            {/* Pickup Location */}
             <div>
-              <Label className="mb-2 block">{t("create.pickup")}</Label>
+              <Label className="mb-2 block flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-emerald-600" />
+                {t("create.pickup")} *
+              </Label>
+              <AddressSearch
+                onSelect={handlePickupAddressSelect}
+                placeholder="Rechercher l'adresse de départ..."
+                value={formData.pickup_location}
+                data-testid="pickup-address-search"
+              />
               <button
                 onClick={() => setSelectingLocation("pickup")}
-                className={`w-full p-4 rounded-xl border-2 flex items-center gap-3 transition-colors ${
-                  selectingLocation === "pickup" ? "border-primary bg-primary/5" : "border-border"
-                }`}
-                data-testid="select-pickup-btn"
+                className="mt-2 text-sm text-primary hover:underline flex items-center gap-1"
+                data-testid="select-pickup-map-btn"
               >
-                <MapPin className="w-5 h-5 text-emerald-600" />
-                <span className={formData.pickup_location ? "text-foreground" : "text-muted-foreground"}>
-                  {formData.pickup_location ? "Point de départ sélectionné ✓" : "Cliquez sur la carte"}
-                </span>
+                <MapIcon className="w-4 h-4" />
+                Ou pointer sur la carte
               </button>
             </div>
             
+            {/* Dropoff Location */}
             <div>
-              <Label className="mb-2 block">{t("create.dropoff")}</Label>
+              <Label className="mb-2 block flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-amber-500" />
+                {t("create.dropoff")} *
+              </Label>
+              <AddressSearch
+                onSelect={handleDropoffAddressSelect}
+                placeholder="Rechercher l'adresse d'arrivée..."
+                value={formData.dropoff_location}
+                data-testid="dropoff-address-search"
+              />
               <button
                 onClick={() => setSelectingLocation("dropoff")}
-                className={`w-full p-4 rounded-xl border-2 flex items-center gap-3 transition-colors ${
-                  selectingLocation === "dropoff" ? "border-primary bg-primary/5" : "border-border"
-                }`}
-                data-testid="select-dropoff-btn"
+                className="mt-2 text-sm text-primary hover:underline flex items-center gap-1"
+                data-testid="select-dropoff-map-btn"
               >
-                <MapPin className="w-5 h-5 text-amber-500" />
-                <span className={formData.dropoff_location ? "text-foreground" : "text-muted-foreground"}>
-                  {formData.dropoff_location ? "Point d'arrivée sélectionné ✓" : "Cliquez sur la carte"}
-                </span>
+                <MapIcon className="w-4 h-4" />
+                Ou pointer sur la carte
               </button>
             </div>
 
             {selectingLocation && (
-              <p className="text-sm text-primary font-medium text-center animate-pulse-soft">
-                Cliquez sur la carte pour sélectionner {selectingLocation === "pickup" ? "le départ" : "l'arrivée"}
-              </p>
+              <div className="p-3 bg-primary/10 rounded-xl text-center">
+                <p className="text-sm text-primary font-medium animate-pulse-soft">
+                  Cliquez sur la carte pour sélectionner {selectingLocation === "pickup" ? "le départ" : "l'arrivée"}
+                </p>
+              </div>
             )}
           </div>
 
@@ -234,7 +248,7 @@ export default function CreateRequestPage() {
             <Map
               onLocationSelect={handleLocationSelect}
               selectedLocation={selectingLocation === "pickup" ? formData.pickup_location : formData.dropoff_location}
-              className="h-[300px]"
+              className="h-[250px]"
             />
           </div>
 
