@@ -109,6 +109,8 @@ export default function HomePage() {
     },
   ];
 
+  const currentCountry = countries.find(c => c.code === selectedCountry);
+
   return (
     <div className="pb-24" data-testid="home-page">
       {/* Hero Section */}
@@ -116,24 +118,28 @@ export default function HomePage() {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url(https://images.unsplash.com/photo-1707009548478-6fbf72bbb6fd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwxfHxhbWF6b24lMjByYWluZm9yZXN0JTIwcm9hZCUyMGFlcmlhbHxlbnwwfHx8fDE3NjU5ODM3Mzd8MA&ixlib=rb-4.1.0&q=85)`,
+            backgroundImage: `url(https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=1200)`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-emerald-900/90 to-emerald-900/70" />
         
-        {/* Notification Bell */}
-        <div className="absolute top-4 right-4 z-10">
+        {/* Top bar: Country selector + Notifications */}
+        <div className="relative flex items-center justify-between px-4 pt-4 z-10">
+          <CountrySelector 
+            selectedCountry={selectedCountry}
+            onSelect={handleCountrySelect}
+          />
           <div className="bg-white/20 backdrop-blur-sm rounded-full">
             <NotificationBell />
           </div>
         </div>
         
-        <div className="relative px-6 pt-12 pb-8">
+        <div className="relative px-6 pt-6 pb-8">
           <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3 leading-tight">
-            {t("home.title")}
+            Livraison collaborative
           </h1>
           <p className="text-emerald-100/80 text-base sm:text-lg mb-6 max-w-md">
-            {t("home.subtitle")}
+            Envoyez vos colis, faites vos courses avec l'aide de vos voisins - partout dans le monde
           </p>
           
           <div className="flex flex-wrap gap-3">
