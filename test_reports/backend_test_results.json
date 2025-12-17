@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-12-17T15:22:36.017949",
+  "timestamp": "2025-12-17T17:05:59.352183",
   "total_tests": 14,
   "passed_tests": 14,
   "success_rate": 100.0,
@@ -18,8 +18,8 @@
       "success": true,
       "details": "Status: 200",
       "response_data": {
-        "id": "c48f3d49-3ad8-4354-8e97-6e066febcef0",
-        "name": "Test Deliverer 152235",
+        "id": "0f5c1bd1-129f-4f9b-9f2e-7c30e1c38f0e",
+        "name": "Test Deliverer 170558",
         "phone": "+594694123456",
         "vehicle_type": "car",
         "photo_url": null,
@@ -33,7 +33,7 @@
         "rating": 5.0,
         "total_deliveries": 0,
         "is_premium": false,
-        "created_at": "2025-12-17T15:22:35.554918+00:00"
+        "created_at": "2025-12-17T17:05:58.854111+00:00"
       }
     },
     {
@@ -68,6 +68,42 @@
           "current_location": {
             "lat": 4.9372,
             "lng": -52.3267,
+            "address": null
+          },
+          "status": "available",
+          "trip_announcement": null,
+          "rating": 5.0,
+          "total_deliveries": 1,
+          "is_premium": false,
+          "created_at": "2025-12-17T15:22:35.554918+00:00"
+        },
+        {
+          "id": "37151495-b8fc-47bb-8171-12db3897e1fc",
+          "name": "Test Deliverer Frontend",
+          "phone": "+594694123456",
+          "vehicle_type": "car",
+          "photo_url": null,
+          "current_location": {
+            "lat": 4.9372,
+            "lng": -52.3267,
+            "address": null
+          },
+          "status": "available",
+          "trip_announcement": "Je vais de Cayenne \u00e0 Kourou",
+          "rating": 5.0,
+          "total_deliveries": 0,
+          "is_premium": false,
+          "created_at": "2025-12-17T15:23:38.203470+00:00"
+        },
+        {
+          "id": "0f5c1bd1-129f-4f9b-9f2e-7c30e1c38f0e",
+          "name": "Test Deliverer 170558",
+          "phone": "+594694123456",
+          "vehicle_type": "car",
+          "photo_url": null,
+          "current_location": {
+            "lat": 4.9372,
+            "lng": -52.3267,
             "address": "Cayenne, Guyane fran\u00e7aise"
           },
           "status": "offline",
@@ -75,7 +111,7 @@
           "rating": 5.0,
           "total_deliveries": 0,
           "is_premium": false,
-          "created_at": "2025-12-17T15:22:35.554918+00:00"
+          "created_at": "2025-12-17T17:05:58.854111+00:00"
         }
       ]
     },
@@ -84,8 +120,8 @@
       "success": true,
       "details": "Status: 200",
       "response_data": {
-        "id": "c48f3d49-3ad8-4354-8e97-6e066febcef0",
-        "name": "Test Deliverer 152235",
+        "id": "0f5c1bd1-129f-4f9b-9f2e-7c30e1c38f0e",
+        "name": "Test Deliverer 170558",
         "phone": "+594694123456",
         "vehicle_type": "car",
         "photo_url": null,
@@ -99,7 +135,7 @@
         "rating": 5.0,
         "total_deliveries": 0,
         "is_premium": false,
-        "created_at": "2025-12-17T15:22:35.554918+00:00"
+        "created_at": "2025-12-17T17:05:58.854111+00:00"
       }
     },
     {
@@ -107,9 +143,9 @@
       "success": true,
       "details": "Status: 200",
       "response_data": {
-        "id": "90cb0fe6-fede-4a21-bf16-4429d3dca54d",
+        "id": "e7adb9f2-8a95-4d94-bde0-9dadf3b83b52",
         "request_type": "heavy",
-        "title": "Test Delivery 152235",
+        "title": "Test Delivery 170558",
         "description": "Test delivery request for API testing",
         "pickup_location": {
           "lat": 4.9372,
@@ -131,7 +167,7 @@
         "client_phone": "+594694987654",
         "status": "pending",
         "deliverer_id": null,
-        "created_at": "2025-12-17T15:22:35.675940+00:00",
+        "created_at": "2025-12-17T17:05:58.985544+00:00",
         "accepted_at": null,
         "completed_at": null,
         "payment_status": "unpaid"
@@ -142,6 +178,36 @@
       "success": true,
       "details": "Status: 200",
       "response_data": [
+        {
+          "id": "e7adb9f2-8a95-4d94-bde0-9dadf3b83b52",
+          "request_type": "heavy",
+          "title": "Test Delivery 170558",
+          "description": "Test delivery request for API testing",
+          "pickup_location": {
+            "lat": 4.9372,
+            "lng": -52.3267,
+            "address": "Cayenne Centre"
+          },
+          "dropoff_location": {
+            "lat": 4.95,
+            "lng": -52.31,
+            "address": "Remire-Montjoly"
+          },
+          "product_type": "furniture",
+          "photo_url": null,
+          "proposed_price": 25.0,
+          "desired_time": "14:00",
+          "vehicle_type": "pickup",
+          "needs_helper": true,
+          "client_name": "Test Client",
+          "client_phone": "+594694987654",
+          "status": "pending",
+          "deliverer_id": null,
+          "created_at": "2025-12-17T17:05:58.985544+00:00",
+          "accepted_at": null,
+          "completed_at": null,
+          "payment_status": "unpaid"
+        },
         {
           "id": "90cb0fe6-fede-4a21-bf16-4429d3dca54d",
           "request_type": "heavy",
@@ -165,11 +231,11 @@
           "needs_helper": true,
           "client_name": "Test Client",
           "client_phone": "+594694987654",
-          "status": "pending",
-          "deliverer_id": null,
+          "status": "completed",
+          "deliverer_id": "c48f3d49-3ad8-4354-8e97-6e066febcef0",
           "created_at": "2025-12-17T15:22:35.675940+00:00",
-          "accepted_at": null,
-          "completed_at": null,
+          "accepted_at": "2025-12-17T15:22:35.830149+00:00",
+          "completed_at": "2025-12-17T15:22:35.871420+00:00",
           "payment_status": "unpaid"
         },
         {
@@ -209,9 +275,9 @@
       "success": true,
       "details": "Status: 200",
       "response_data": {
-        "id": "90cb0fe6-fede-4a21-bf16-4429d3dca54d",
+        "id": "e7adb9f2-8a95-4d94-bde0-9dadf3b83b52",
         "request_type": "heavy",
-        "title": "Test Delivery 152235",
+        "title": "Test Delivery 170558",
         "description": "Test delivery request for API testing",
         "pickup_location": {
           "lat": 4.9372,
@@ -233,7 +299,7 @@
         "client_phone": "+594694987654",
         "status": "pending",
         "deliverer_id": null,
-        "created_at": "2025-12-17T15:22:35.675940+00:00",
+        "created_at": "2025-12-17T17:05:58.985544+00:00",
         "accepted_at": null,
         "completed_at": null,
         "payment_status": "unpaid"
@@ -256,7 +322,7 @@
       "details": "Status: 200",
       "response_data": {
         "message": "Request accepted",
-        "request_id": "90cb0fe6-fede-4a21-bf16-4429d3dca54d"
+        "request_id": "e7adb9f2-8a95-4d94-bde0-9dadf3b83b52"
       }
     },
     {
@@ -265,7 +331,7 @@
       "details": "Status: 200",
       "response_data": {
         "message": "Delivery completed",
-        "request_id": "90cb0fe6-fede-4a21-bf16-4429d3dca54d"
+        "request_id": "e7adb9f2-8a95-4d94-bde0-9dadf3b83b52"
       }
     },
     {
@@ -273,12 +339,12 @@
       "success": true,
       "details": "Status: 200",
       "response_data": {
-        "id": "68b25f95-bb03-4c15-a5ad-c818c04bc30a",
-        "request_id": "90cb0fe6-fede-4a21-bf16-4429d3dca54d",
+        "id": "e57b5d8e-a207-44da-ae3b-be56729110ca",
+        "request_id": "e7adb9f2-8a95-4d94-bde0-9dadf3b83b52",
         "sender_type": "client",
         "sender_name": "Test Client",
         "message": "Hello, is the delivery still on schedule?",
-        "created_at": "2025-12-17T15:22:35.908290+00:00"
+        "created_at": "2025-12-17T17:05:59.219033+00:00"
       }
     },
     {
@@ -287,12 +353,12 @@
       "details": "Status: 200",
       "response_data": [
         {
-          "id": "68b25f95-bb03-4c15-a5ad-c818c04bc30a",
-          "request_id": "90cb0fe6-fede-4a21-bf16-4429d3dca54d",
+          "id": "e57b5d8e-a207-44da-ae3b-be56729110ca",
+          "request_id": "e7adb9f2-8a95-4d94-bde0-9dadf3b83b52",
           "sender_type": "client",
           "sender_name": "Test Client",
           "message": "Hello, is the delivery still on schedule?",
-          "created_at": "2025-12-17T15:22:35.908290+00:00"
+          "created_at": "2025-12-17T17:05:59.219033+00:00"
         }
       ]
     },
@@ -301,12 +367,12 @@
       "success": true,
       "details": "Status: 200",
       "response_data": {
-        "id": "1893851f-858c-4fc3-864c-33af73d0171c",
-        "request_id": "90cb0fe6-fede-4a21-bf16-4429d3dca54d",
-        "deliverer_id": "c48f3d49-3ad8-4354-8e97-6e066febcef0",
+        "id": "85084a7d-4fbe-4ea5-87ee-0616b27ab241",
+        "request_id": "e7adb9f2-8a95-4d94-bde0-9dadf3b83b52",
+        "deliverer_id": "0f5c1bd1-129f-4f9b-9f2e-7c30e1c38f0e",
         "rating": 5,
         "comment": "Excellent service, very professional!",
-        "created_at": "2025-12-17T15:22:35.977802+00:00"
+        "created_at": "2025-12-17T17:05:59.303360+00:00"
       }
     },
     {
@@ -315,22 +381,22 @@
       "details": "Status: 200",
       "response_data": [
         {
-          "id": "1893851f-858c-4fc3-864c-33af73d0171c",
-          "request_id": "90cb0fe6-fede-4a21-bf16-4429d3dca54d",
-          "deliverer_id": "c48f3d49-3ad8-4354-8e97-6e066febcef0",
+          "id": "85084a7d-4fbe-4ea5-87ee-0616b27ab241",
+          "request_id": "e7adb9f2-8a95-4d94-bde0-9dadf3b83b52",
+          "deliverer_id": "0f5c1bd1-129f-4f9b-9f2e-7c30e1c38f0e",
           "rating": 5,
           "comment": "Excellent service, very professional!",
-          "created_at": "2025-12-17T15:22:35.977802+00:00"
+          "created_at": "2025-12-17T17:05:59.303360+00:00"
         }
       ]
     }
   ],
   "created_test_data": {
     "deliverers": [
-      "c48f3d49-3ad8-4354-8e97-6e066febcef0"
+      "0f5c1bd1-129f-4f9b-9f2e-7c30e1c38f0e"
     ],
     "requests": [
-      "90cb0fe6-fede-4a21-bf16-4429d3dca54d"
+      "e7adb9f2-8a95-4d94-bde0-9dadf3b83b52"
     ],
     "chat_messages": [],
     "ratings": []
