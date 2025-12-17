@@ -46,14 +46,14 @@ function MapClickHandler({ onLocationSelect }) {
 }
 
 // Component to fly to location
-function FlyToLocation({ center }) {
+function FlyToLocation({ center, zoom }) {
   const map = useMap();
   
   useEffect(() => {
     if (center) {
-      map.flyTo(center, 13, { duration: 1 });
+      map.flyTo(center, zoom || 12, { duration: 1.5 });
     }
-  }, [center, map]);
+  }, [center, zoom, map]);
   
   return null;
 }
@@ -64,18 +64,19 @@ export default function Map({
   userLocation = null,
   onLocationSelect = null,
   selectedLocation = null,
-  center = [4.9372, -52.3267], // Cayenne, French Guiana
+  center = [4.9372, -52.3267], // Default to French Guiana
   zoom = 12,
   className = "",
 }) {
   const mapRef = useRef(null);
   const [mapCenter, setMapCenter] = useState(center);
+  const [mapZoom, setMapZoom] = useState(zoom);
 
+  // Update map when center/zoom props change
   useEffect(() => {
-    if (userLocation) {
-      setMapCenter([userLocation.lat, userLocation.lng]);
-    }
-  }, [userLocation]);
+    setMapCenter(center);
+    setMapZoom(zoom);
+  }, [center, zoom]);
 
   return (
     <div className={`map-container ${className}`} data-testid="map-container">
