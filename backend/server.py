@@ -552,8 +552,8 @@ class PriceEstimationRequest(BaseModel):
 
 @api_router.post("/estimate-price")
 async def estimate_delivery_price(request: PriceEstimationRequest):
-    distance = calculate_distance(pickup.model_dump(), dropoff.model_dump())
-    price = estimate_price(distance, request_type, needs_helper)
+    distance = calculate_distance(request.pickup.model_dump(), request.dropoff.model_dump())
+    price = estimate_price(distance, request.request_type, request.needs_helper)
     
     return {
         "distance_km": round(distance, 2),
