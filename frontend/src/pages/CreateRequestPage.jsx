@@ -86,19 +86,21 @@ export default function CreateRequestPage() {
   };
 
   const handlePickupAddressSelect = (location) => {
-    if (location) {
-      setFormData(prev => ({ ...prev, pickup_location: location }));
-    } else {
-      setFormData(prev => ({ ...prev, pickup_location: null }));
-    }
+    console.log("Pickup selected:", location);
+    setFormData(prev => {
+      const updated = { ...prev, pickup_location: location || null };
+      console.log("Updated formData:", updated);
+      return updated;
+    });
   };
 
   const handleDropoffAddressSelect = (location) => {
-    if (location) {
-      setFormData(prev => ({ ...prev, dropoff_location: location }));
-    } else {
-      setFormData(prev => ({ ...prev, dropoff_location: null }));
-    }
+    console.log("Dropoff selected:", location);
+    setFormData(prev => {
+      const updated = { ...prev, dropoff_location: location || null };
+      console.log("Updated formData:", updated);
+      return updated;
+    });
   };
 
   const handleSubmit = async () => {
