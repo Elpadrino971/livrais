@@ -12,6 +12,7 @@ import DelivererModePage from "./pages/DelivererModePage";
 import HistoryPage from "./pages/HistoryPage";
 import SettingsPage from "./pages/SettingsPage";
 import PaymentSuccessPage from "./pages/PaymentSuccessPage";
+import TrackingPage from "./pages/TrackingPage";
 
 // Components
 import BottomNav from "./components/BottomNav";
