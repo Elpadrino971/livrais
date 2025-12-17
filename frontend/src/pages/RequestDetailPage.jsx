@@ -34,6 +34,7 @@ export default function RequestDetailPage() {
   const [loading, setLoading] = useState(true);
   const [showChat, setShowChat] = useState(false);
   const [showRating, setShowRating] = useState(false);
+  const [showPhotoZoom, setShowPhotoZoom] = useState(false);
   const [newMessage, setNewMessage] = useState("");
   const [rating, setRating] = useState(5);
   const [ratingComment, setRatingComment] = useState("");
