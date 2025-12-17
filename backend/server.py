@@ -161,6 +161,50 @@ class Notification(BaseModel):
     read: bool = False
     created_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
+# --- Community Forum Models ---
+
+class CommunityPostCreate(BaseModel):
+    post_type: str  # "carpool", "availability", "search", "offer", "other"
+    title: str
+    content: str
+    author_name: str
+    author_phone: Optional[str] = None
+    location: Optional[Location] = None
+    destination: Optional[Location] = None
+    date_info: Optional[str] = None  # "Cette semaine", "Demain", "Lundi 15"
+    tags: Optional[List[str]] = []
+
+class CommunityPost(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    post_type: str
+    title: str
+    content: str
+    author_name: str
+    author_phone: Optional[str] = None
+    location: Optional[Dict[str, Any]] = None
+    destination: Optional[Dict[str, Any]] = None
+    date_info: Optional[str] = None
+    tags: List[str] = []
+    replies_count: int = 0
+    is_active: bool = True
+    created_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+
+class CommunityReplyCreate(BaseModel):
+    post_id: str
+    author_name: str
+    content: str
+    author_phone: Optional[str] = None
+
+class CommunityReply(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    post_id: str
+    author_name: str
+    content: str
+    author_phone: Optional[str] = None
+    created_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+
 # =============================================================================
 # HELPER FUNCTIONS
 # =============================================================================
