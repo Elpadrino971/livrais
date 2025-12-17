@@ -294,17 +294,62 @@ export default function RequestDetailPage() {
           </p>
         </div>
 
-        {/* Photo if available */}
+        {/* Photo if available - Compact thumbnail with zoom */}
         {request.photo_url && (
-          <div className="card overflow-hidden">
-            <img 
-              src={request.photo_url} 
-              alt="Photo du produit" 
-              className="w-full h-48 object-cover"
-              data-testid="request-photo"
-            />
+          <div className="card p-3">
+            <div className="flex items-center gap-3">
+              {/* Thumbnail */}
+              <div 
+                className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 cursor-pointer group"
+                onClick={() => setShowPhotoZoom(true)}
+                data-testid="request-photo"
+              >
+                <img 
+                  src={request.photo_url} 
+                  alt="Photo du produit" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <ZoomIn className="w-5 h-5 text-white" />
+                </div>
+              </div>
+              
+              {/* Info */}
+              <div className="flex-1">
+                <p className="font-medium text-foreground">Photo du produit</p>
+                <p className="text-sm text-muted-foreground">Cliquez pour agrandir</p>
+              </div>
+              
+              {/* Zoom button */}
+              <button
+                onClick={() => setShowPhotoZoom(true)}
+                className="p-3 bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 rounded-full transition-colors"
+                data-testid="zoom-product-photo"
+              >
+                <ZoomIn className="w-5 h-5 text-muted-foreground" />
+              </button>
+            </div>
           </div>
         )}
+
+        {/* Photo Zoom Dialog */}
+        <Dialog open={showPhotoZoom} onOpenChange={setShowPhotoZoom}>
+          <DialogContent className="max-w-3xl p-2 bg-black/95 border-0">
+            <div className="relative">
+              <img 
+                src={request?.photo_url} 
+                alt="Photo agrandie" 
+                className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+              />
+              <button
+                onClick={() => setShowPhotoZoom(false)}
+                className="absolute top-2 right-2 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+          </DialogContent>
+        </Dialog>
 
         {/* Actions */}
         <div className="space-y-3 pt-4">
