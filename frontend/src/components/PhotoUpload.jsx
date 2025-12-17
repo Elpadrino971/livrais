@@ -1,7 +1,8 @@
 import { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import { Camera, X, Loader2, Image } from "lucide-react";
+import { Camera, X, Loader2, ZoomIn } from "lucide-react";
 import axios from "axios";
+import { Dialog, DialogContent } from "./ui/dialog";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -9,6 +10,7 @@ export default function PhotoUpload({ onUpload, currentPhoto = null, className =
   const [uploading, setUploading] = useState(false);
   const [preview, setPreview] = useState(currentPhoto);
   const [error, setError] = useState(null);
+  const [showZoom, setShowZoom] = useState(false);
 
   const onDrop = useCallback(async (acceptedFiles) => {
     const file = acceptedFiles[0];
