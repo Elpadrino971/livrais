@@ -77,11 +77,27 @@ export default function CreateRequestPage() {
 
   const handleLocationSelect = (location) => {
     if (selectingLocation === "pickup") {
-      setFormData(prev => ({ ...prev, pickup_location: { ...location, address: "Point de départ" } }));
+      setFormData(prev => ({ ...prev, pickup_location: { ...location, address: location.address || "Point de départ" } }));
     } else if (selectingLocation === "dropoff") {
-      setFormData(prev => ({ ...prev, dropoff_location: { ...location, address: "Point d'arrivée" } }));
+      setFormData(prev => ({ ...prev, dropoff_location: { ...location, address: location.address || "Point d'arrivée" } }));
     }
     setSelectingLocation(null);
+  };
+
+  const handlePickupAddressSelect = (location) => {
+    if (location) {
+      setFormData(prev => ({ ...prev, pickup_location: location }));
+    } else {
+      setFormData(prev => ({ ...prev, pickup_location: null }));
+    }
+  };
+
+  const handleDropoffAddressSelect = (location) => {
+    if (location) {
+      setFormData(prev => ({ ...prev, dropoff_location: location }));
+    } else {
+      setFormData(prev => ({ ...prev, dropoff_location: null }));
+    }
   };
 
   const handleSubmit = async () => {
