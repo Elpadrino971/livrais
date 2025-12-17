@@ -544,13 +544,14 @@ async def stripe_webhook(request: Request):
 
 # --- Price Estimation ---
 
-@api_router.post("/estimate-price")
-async def estimate_delivery_price(
-    pickup: Location,
-    dropoff: Location,
-    request_type: str,
+class PriceEstimationRequest(BaseModel):
+    pickup: Location
+    dropoff: Location
+    request_type: str
     needs_helper: bool = False
-):
+
+@api_router.post("/estimate-price")
+async def estimate_delivery_price(request: PriceEstimationRequest):
     distance = calculate_distance(pickup.model_dump(), dropoff.model_dump())
     price = estimate_price(distance, request_type, needs_helper)
     
