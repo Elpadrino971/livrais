@@ -1,0 +1,152 @@
+{
+  "identity": {
+    "name": "GuyaneConnect",
+    "theme": "Tropical Utility",
+    "core_concept": "Jungle logistics meets community warmth. A fusion of Swiss precision (for the map/tracking) and Caribbean vibrancy (for the human connection).",
+    "emotional_tone": "Reliable, Neighborly, Efficient, Vibrant",
+    "persona_alignment": "E1 - Anti-AI Designer"
+  },
+  "colors": {
+    "palette": {
+      "primary": {
+        "name": "Jungle Deep",
+        "hex": "#064E3B",
+        "tailwind": "emerald-900",
+        "usage": "Primary actions, headers, branding"
+      },
+      "secondary": {
+        "name": "Rocou Warning",
+        "hex": "#F59E0B",
+        "tailwind": "amber-500",
+        "usage": "Alerts, high-visibility tags, 'Urgent' status"
+      },
+      "accent": {
+        "name": "Hibiscus",
+        "hex": "#EC4899",
+        "tailwind": "pink-500",
+        "usage": "Micro-interactions, heart icons, delight"
+      },
+      "background": {
+        "name": "Warm Sand",
+        "hex": "#FDFBF7",
+        "tailwind": "stone-50",
+        "usage": "App background (Light Mode)"
+      },
+      "surface": {
+        "name": "Clay White",
+        "hex": "#FFFFFF",
+        "tailwind": "white",
+        "usage": "Cards, sheets, inputs"
+      },
+      "text": {
+        "primary": "#0C0A09",
+        "secondary": "#57534E",
+        "muted": "#A8A29E"
+      }
+    },
+    "gradients": {
+      "hero": "linear-gradient(135deg, #064E3B 0%, #065F46 100%)",
+      "glass": "linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 100%)"
+    }
+  },
+  "typography": {
+    "headings": {
+      "family": "Clash Display, Syne, sans-serif",
+      "weight": "600",
+      "tracking": "-0.02em",
+      "usage": "Page titles, hero text"
+    },
+    "body": {
+      "family": "Plus Jakarta Sans, Satoshi, sans-serif",
+      "weight": "400",
+      "usage": "Paragraphs, UI labels"
+    },
+    "mono": {
+      "family": "JetBrains Mono, monospace",
+      "usage": "Tracking numbers, prices, time"
+    }
+  },
+  "layout": {
+    "spacing_scale": "Generous (2x standard). Use p-6 or p-8 where p-4 is normal.",
+    "grid_system": "Mobile-first. Single column for phone, 'Bento' grid for tablet/desktop.",
+    "containers": {
+      "mobile": "w-full px-4",
+      "desktop": "max-w-5xl mx-auto"
+    },
+    "z_index_strategy": {
+      "map": 0,
+      "overlays": 10,
+      "bottom_sheet": 20,
+      "modal": 50,
+      "toast": 100
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-primary text-white rounded-full px-8 py-4 shadow-lg hover:shadow-xl transition-all active:scale-95 font-semibold tracking-wide",
+      "secondary": "bg-white text-primary border-2 border-primary/10 rounded-full px-8 py-4 hover:bg-stone-50 transition-all",
+      "ghost": "text-stone-600 hover:text-primary hover:bg-primary/5 rounded-lg px-4 py-2"
+    },
+    "cards": {
+      "style": "Clay + Glass",
+      "base": "bg-white rounded-2xl border border-stone-200 shadow-[0_2px_8px_rgba(0,0,0,0.04)]",
+      "glass": "backdrop-blur-xl bg-white/80 border border-white/20 shadow-lg"
+    },
+    "inputs": {
+      "style": "bg-stone-50 border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-xl h-12 px-4 transition-all"
+    },
+    "bottom_sheet": {
+      "style": "rounded-t-[32px] bg-white shadow-[0_-4px_24px_rgba(0,0,0,0.1)]"
+    }
+  },
+  "visual_enhancers": {
+    "radius": "0.75rem (12px) for cards, 9999px for buttons",
+    "shadows": "Soft, diffuse, colored. shadow-emerald-900/10",
+    "textures": "Subtle noise overlay on solid backgrounds to reduce 'digital flatness'",
+    "icons": "Lucide React (Rounded stroke, 2px weight)"
+  },
+  "image_urls": {
+    "hero_background": {
+      "url": "https://images.unsplash.com/photo-1707009548478-6fbf72bbb6fd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwxfHxhbWF6b24lMjByYWluZm9yZXN0JTIwcm9hZCUyMGFlcmlhbHxlbnwwfHx8fDE3NjU5ODM3Mzd8MA&ixlib=rb-4.1.0&q=85",
+      "desc": "Aerial view of winding road in rainforest - Use for Login/Welcome screen background"
+    },
+    "category_groceries": {
+      "url": "https://images.unsplash.com/photo-1574661062600-4a3cd81d2375?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODF8MHwxfHNlYXJjaHwxfHx0cm9waWNhbCUyMGZydWl0JTIwbWFya2V0JTIwY29sb3JmdWx8ZW58MHx8fHwxNzY1OTgzNzQwfDA&ixlib=rb-4.1.0&q=85",
+      "desc": "Tropical fruit market - Use for 'Courses / Groceries' category card"
+    },
+    "category_heavy": {
+      "url": "https://images.unsplash.com/photo-1762133643848-48bfb978d0a7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwzfHxwaWNrdXAlMjB0cnVjayUyMG9mZnJvYWQlMjBtdWR8ZW58MHx8fHwxNzY1OTgzNzQyfDA&ixlib=rb-4.1.0&q=85",
+      "desc": "Pickup truck convoy - Use for 'Heavy Delivery' category card"
+    },
+    "community_vibe": {
+      "url": "https://images.unsplash.com/photo-1758272133904-413d8755e728?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHwxfHxoYXBweSUyMGRpdmVyc2UlMjBwZW9wbGUlMjBjb21tdW5pdHklMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjU5ODM3MjV8MA&ixlib=rb-4.1.0&q=85",
+      "desc": "Diverse group selfie - Use for 'Become a Deliverer' promo section"
+    },
+    "package_icon": {
+      "url": "https://images.unsplash.com/photo-1711852700869-17004fc26e44?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwzfHxkZWxpdmVyeSUyMGNvdXJpZXIlMjBwYWNrYWdlJTIwdHJvcGljYWx8ZW58MHx8fHwxNzY1OTgzNzIyfDA&ixlib=rb-4.1.0&q=85",
+      "desc": "Cardboard box with arrow - Use for 'Track Package' or generic delivery icon"
+    }
+  },
+  "instructions_to_main_agent": [
+    "OVERRIDE tailwind.config.js colors with the palette provided above. Do not use the default 'hsl(var(--primary))' logic unless you update the CSS variables to match these hex codes.",
+    "Use 'Clash Display' for all headings. If not available via standard import, use a bold, wide sans-serif like 'Syne' or 'Outfit'.",
+    "For the Map View: Ensure the map container is z-0 and absolute. All UI elements (search, bottom sheet) must float above it with glassmorphism.",
+    "For Forms: Do not use default browser inputs. Use the custom 'inputs' style defined in components.",
+    "For Toasts: Use 'sonner' with the 'richColors' prop enabled.",
+    "Mobile First: Always design for 375px width first, then scale up.",
+    "Add 'data-testid' to every interactive element (buttons, inputs, cards)."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Avoid 'AI Slop': No generic centered layouts. Use asymmetry.",
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur).",
+    "You MUST NOT apply universal transition. Eg: 'transition: all'.",
+    "You MUST NOT center align the app container.",
+    "Always use modern button styles like pill-shaped.",
+    "NEVER use AI assistant Emoji characters like 🤖🧠 etc.",
+    "Every interaction needs micro-animations.",
+    "Use 2-3x more spacing than feels comfortable.",
+    "Subtle grain textures and noise overlays separate good from extraordinary."
+  ]
+}
