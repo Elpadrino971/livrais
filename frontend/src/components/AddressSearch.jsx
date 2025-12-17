@@ -43,8 +43,9 @@ export default function AddressSearch({
     setLoading(true);
     try {
       // Use OpenStreetMap Nominatim API (free, no key required)
+      // Prioritize French Guiana (gf) with viewbox around Cayenne area
       const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&countrycodes=gf,fr&limit=5&addressdetails=1`,
+        `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery + ", Guyane")}&countrycodes=gf&limit=5&addressdetails=1&viewbox=-54.6,6.0,-51.5,2.0&bounded=0`,
         {
           headers: {
             'Accept-Language': 'fr'
