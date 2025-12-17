@@ -293,8 +293,33 @@ export default function RequestDetailPage() {
           </p>
         </div>
 
+        {/* Photo if available */}
+        {request.photo_url && (
+          <div className="card overflow-hidden">
+            <img 
+              src={request.photo_url} 
+              alt="Photo du produit" 
+              className="w-full h-48 object-cover"
+              data-testid="request-photo"
+            />
+          </div>
+        )}
+
         {/* Actions */}
         <div className="space-y-3 pt-4">
+          {/* Tracking button for accepted deliveries */}
+          {(request.status === "accepted" || request.status === "in_progress") && (
+            <Link to={`/tracking/${id}`} className="block">
+              <Button 
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                data-testid="tracking-btn"
+              >
+                <Navigation className="w-5 h-5" />
+                Suivre en temps réel
+              </Button>
+            </Link>
+          )}
+
           {request.status === "accepted" && request.payment_status !== "paid" && (
             <Button 
               onClick={handlePayment}
