@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { ArrowLeft, MapPin, Package, ShoppingCart, Truck, Users, Clock, Map as MapIcon } from "lucide-react";
 import Map from "../components/Map";
 import AddressSearch from "../components/AddressSearch";
+import PhotoUpload from "../components/PhotoUpload";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
