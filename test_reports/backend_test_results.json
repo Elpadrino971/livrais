@@ -1,8 +1,8 @@
 {
-  "timestamp": "2025-12-17T15:22:17.360689",
+  "timestamp": "2025-12-17T15:22:36.017949",
   "total_tests": 14,
-  "passed_tests": 13,
-  "success_rate": 92.85714285714286,
+  "passed_tests": 14,
+  "success_rate": 100.0,
   "test_results": [
     {
       "test": "API Root Endpoint",
@@ -18,8 +18,8 @@
       "success": true,
       "details": "Status: 200",
       "response_data": {
-        "id": "72df5361-c9eb-4b0b-b8a1-fbbbda432c9f",
-        "name": "Test Deliverer 152216",
+        "id": "c48f3d49-3ad8-4354-8e97-6e066febcef0",
+        "name": "Test Deliverer 152235",
         "phone": "+594694123456",
         "vehicle_type": "car",
         "photo_url": null,
@@ -33,7 +33,7 @@
         "rating": 5.0,
         "total_deliveries": 0,
         "is_premium": false,
-        "created_at": "2025-12-17T15:22:16.690789+00:00"
+        "created_at": "2025-12-17T15:22:35.554918+00:00"
       }
     },
     {
@@ -50,6 +50,24 @@
           "current_location": {
             "lat": 4.9372,
             "lng": -52.3267,
+            "address": null
+          },
+          "status": "available",
+          "trip_announcement": null,
+          "rating": 5.0,
+          "total_deliveries": 1,
+          "is_premium": false,
+          "created_at": "2025-12-17T15:22:16.690789+00:00"
+        },
+        {
+          "id": "c48f3d49-3ad8-4354-8e97-6e066febcef0",
+          "name": "Test Deliverer 152235",
+          "phone": "+594694123456",
+          "vehicle_type": "car",
+          "photo_url": null,
+          "current_location": {
+            "lat": 4.9372,
+            "lng": -52.3267,
             "address": "Cayenne, Guyane fran\u00e7aise"
           },
           "status": "offline",
@@ -57,7 +75,7 @@
           "rating": 5.0,
           "total_deliveries": 0,
           "is_premium": false,
-          "created_at": "2025-12-17T15:22:16.690789+00:00"
+          "created_at": "2025-12-17T15:22:35.554918+00:00"
         }
       ]
     },
@@ -66,8 +84,8 @@
       "success": true,
       "details": "Status: 200",
       "response_data": {
-        "id": "72df5361-c9eb-4b0b-b8a1-fbbbda432c9f",
-        "name": "Test Deliverer 152216",
+        "id": "c48f3d49-3ad8-4354-8e97-6e066febcef0",
+        "name": "Test Deliverer 152235",
         "phone": "+594694123456",
         "vehicle_type": "car",
         "photo_url": null,
@@ -81,7 +99,7 @@
         "rating": 5.0,
         "total_deliveries": 0,
         "is_premium": false,
-        "created_at": "2025-12-17T15:22:16.690789+00:00"
+        "created_at": "2025-12-17T15:22:35.554918+00:00"
       }
     },
     {
@@ -89,9 +107,9 @@
       "success": true,
       "details": "Status: 200",
       "response_data": {
-        "id": "b6ea0f96-5b28-4c94-86f4-64ab92b07c49",
+        "id": "90cb0fe6-fede-4a21-bf16-4429d3dca54d",
         "request_type": "heavy",
-        "title": "Test Delivery 152216",
+        "title": "Test Delivery 152235",
         "description": "Test delivery request for API testing",
         "pickup_location": {
           "lat": 4.9372,
@@ -113,7 +131,7 @@
         "client_phone": "+594694987654",
         "status": "pending",
         "deliverer_id": null,
-        "created_at": "2025-12-17T15:22:16.873336+00:00",
+        "created_at": "2025-12-17T15:22:35.675940+00:00",
         "accepted_at": null,
         "completed_at": null,
         "payment_status": "unpaid"
@@ -124,6 +142,36 @@
       "success": true,
       "details": "Status: 200",
       "response_data": [
+        {
+          "id": "90cb0fe6-fede-4a21-bf16-4429d3dca54d",
+          "request_type": "heavy",
+          "title": "Test Delivery 152235",
+          "description": "Test delivery request for API testing",
+          "pickup_location": {
+            "lat": 4.9372,
+            "lng": -52.3267,
+            "address": "Cayenne Centre"
+          },
+          "dropoff_location": {
+            "lat": 4.95,
+            "lng": -52.31,
+            "address": "Remire-Montjoly"
+          },
+          "product_type": "furniture",
+          "photo_url": null,
+          "proposed_price": 25.0,
+          "desired_time": "14:00",
+          "vehicle_type": "pickup",
+          "needs_helper": true,
+          "client_name": "Test Client",
+          "client_phone": "+594694987654",
+          "status": "pending",
+          "deliverer_id": null,
+          "created_at": "2025-12-17T15:22:35.675940+00:00",
+          "accepted_at": null,
+          "completed_at": null,
+          "payment_status": "unpaid"
+        },
         {
           "id": "b6ea0f96-5b28-4c94-86f4-64ab92b07c49",
           "request_type": "heavy",
@@ -147,11 +195,11 @@
           "needs_helper": true,
           "client_name": "Test Client",
           "client_phone": "+594694987654",
-          "status": "pending",
-          "deliverer_id": null,
+          "status": "completed",
+          "deliverer_id": "72df5361-c9eb-4b0b-b8a1-fbbbda432c9f",
           "created_at": "2025-12-17T15:22:16.873336+00:00",
-          "accepted_at": null,
-          "completed_at": null,
+          "accepted_at": "2025-12-17T15:22:17.128178+00:00",
+          "completed_at": "2025-12-17T15:22:17.172516+00:00",
           "payment_status": "unpaid"
         }
       ]
@@ -161,9 +209,9 @@
       "success": true,
       "details": "Status: 200",
       "response_data": {
-        "id": "b6ea0f96-5b28-4c94-86f4-64ab92b07c49",
+        "id": "90cb0fe6-fede-4a21-bf16-4429d3dca54d",
         "request_type": "heavy",
-        "title": "Test Delivery 152216",
+        "title": "Test Delivery 152235",
         "description": "Test delivery request for API testing",
         "pickup_location": {
           "lat": 4.9372,
@@ -185,7 +233,7 @@
         "client_phone": "+594694987654",
         "status": "pending",
         "deliverer_id": null,
-        "created_at": "2025-12-17T15:22:16.873336+00:00",
+        "created_at": "2025-12-17T15:22:35.675940+00:00",
         "accepted_at": null,
         "completed_at": null,
         "payment_status": "unpaid"
@@ -193,21 +241,13 @@
     },
     {
       "test": "Price Estimation",
-      "success": false,
-      "details": "Expected 200, got 422. Response: {'detail': [{'type': 'missing', 'loc': ['query', 'request_type'], 'msg': 'Field required', 'input': None, 'url': 'https://errors.pydantic.dev/2.12/v/missing'}]}",
+      "success": true,
+      "details": "Status: 200",
       "response_data": {
-        "detail": [
-          {
-            "type": "missing",
-            "loc": [
-              "query",
-              "request_type"
-            ],
-            "msg": "Field required",
-            "input": null,
-            "url": "https://errors.pydantic.dev/2.12/v/missing"
-          }
-        ]
+        "distance_km": 2.33,
+        "estimated_price": 36.99,
+        "platform_fee": 5.55,
+        "deliverer_payout": 31.44
       }
     },
     {
@@ -216,7 +256,7 @@
       "details": "Status: 200",
       "response_data": {
         "message": "Request accepted",
-        "request_id": "b6ea0f96-5b28-4c94-86f4-64ab92b07c49"
+        "request_id": "90cb0fe6-fede-4a21-bf16-4429d3dca54d"
       }
     },
     {
@@ -225,7 +265,7 @@
       "details": "Status: 200",
       "response_data": {
         "message": "Delivery completed",
-        "request_id": "b6ea0f96-5b28-4c94-86f4-64ab92b07c49"
+        "request_id": "90cb0fe6-fede-4a21-bf16-4429d3dca54d"
       }
     },
     {
@@ -233,12 +273,12 @@
       "success": true,
       "details": "Status: 200",
       "response_data": {
-        "id": "df8e5934-cf47-4e3e-97e0-4fc06ff666c2",
-        "request_id": "b6ea0f96-5b28-4c94-86f4-64ab92b07c49",
+        "id": "68b25f95-bb03-4c15-a5ad-c818c04bc30a",
+        "request_id": "90cb0fe6-fede-4a21-bf16-4429d3dca54d",
         "sender_type": "client",
         "sender_name": "Test Client",
         "message": "Hello, is the delivery still on schedule?",
-        "created_at": "2025-12-17T15:22:17.220650+00:00"
+        "created_at": "2025-12-17T15:22:35.908290+00:00"
       }
     },
     {
@@ -247,12 +287,12 @@
       "details": "Status: 200",
       "response_data": [
         {
-          "id": "df8e5934-cf47-4e3e-97e0-4fc06ff666c2",
-          "request_id": "b6ea0f96-5b28-4c94-86f4-64ab92b07c49",
+          "id": "68b25f95-bb03-4c15-a5ad-c818c04bc30a",
+          "request_id": "90cb0fe6-fede-4a21-bf16-4429d3dca54d",
           "sender_type": "client",
           "sender_name": "Test Client",
           "message": "Hello, is the delivery still on schedule?",
-          "created_at": "2025-12-17T15:22:17.220650+00:00"
+          "created_at": "2025-12-17T15:22:35.908290+00:00"
         }
       ]
     },
@@ -261,12 +301,12 @@
       "success": true,
       "details": "Status: 200",
       "response_data": {
-        "id": "ac35d613-7fef-421a-9c68-889f78030fec",
-        "request_id": "b6ea0f96-5b28-4c94-86f4-64ab92b07c49",
-        "deliverer_id": "72df5361-c9eb-4b0b-b8a1-fbbbda432c9f",
+        "id": "1893851f-858c-4fc3-864c-33af73d0171c",
+        "request_id": "90cb0fe6-fede-4a21-bf16-4429d3dca54d",
+        "deliverer_id": "c48f3d49-3ad8-4354-8e97-6e066febcef0",
         "rating": 5,
         "comment": "Excellent service, very professional!",
-        "created_at": "2025-12-17T15:22:17.305257+00:00"
+        "created_at": "2025-12-17T15:22:35.977802+00:00"
       }
     },
     {
@@ -275,22 +315,22 @@
       "details": "Status: 200",
       "response_data": [
         {
-          "id": "ac35d613-7fef-421a-9c68-889f78030fec",
-          "request_id": "b6ea0f96-5b28-4c94-86f4-64ab92b07c49",
-          "deliverer_id": "72df5361-c9eb-4b0b-b8a1-fbbbda432c9f",
+          "id": "1893851f-858c-4fc3-864c-33af73d0171c",
+          "request_id": "90cb0fe6-fede-4a21-bf16-4429d3dca54d",
+          "deliverer_id": "c48f3d49-3ad8-4354-8e97-6e066febcef0",
           "rating": 5,
           "comment": "Excellent service, very professional!",
-          "created_at": "2025-12-17T15:22:17.305257+00:00"
+          "created_at": "2025-12-17T15:22:35.977802+00:00"
         }
       ]
     }
   ],
   "created_test_data": {
     "deliverers": [
-      "72df5361-c9eb-4b0b-b8a1-fbbbda432c9f"
+      "c48f3d49-3ad8-4354-8e97-6e066febcef0"
     ],
     "requests": [
-      "b6ea0f96-5b28-4c94-86f4-64ab92b07c49"
+      "90cb0fe6-fede-4a21-bf16-4429d3dca54d"
     ],
     "chat_messages": [],
     "ratings": []
