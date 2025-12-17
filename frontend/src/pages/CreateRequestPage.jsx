@@ -305,6 +305,15 @@ export default function CreateRequestPage() {
             />
           </div>
 
+          {/* Photo Upload */}
+          <div>
+            <Label className="mb-2 block">Photo du produit (optionnel)</Label>
+            <PhotoUpload
+              onUpload={(url) => setFormData(prev => ({ ...prev, photo_url: url }))}
+              currentPhoto={formData.photo_url}
+            />
+          </div>
+
           <div className="grid grid-cols-2 gap-4">
             <div>
               <Label htmlFor="price">{t("create.price")} (€) *</Label>
