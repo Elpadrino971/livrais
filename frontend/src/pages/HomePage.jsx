@@ -7,6 +7,7 @@ import Map from "../components/Map";
 import RequestCard from "../components/RequestCard";
 import DelivererCard from "../components/DelivererCard";
 import NotificationBell from "../components/NotificationBell";
+import CountrySelector, { countries } from "../components/CountrySelector";
 import { Button } from "../components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 
@@ -18,6 +19,20 @@ export default function HomePage() {
   const [requests, setRequests] = useState([]);
   const [userLocation, setUserLocation] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [selectedCountry, setSelectedCountry] = useState(() => {
+    return localStorage.getItem("selectedCountry") || "GF";
+  });
+  const [mapCenter, setMapCenter] = useState([4.0, -53.0]);
+  const [mapZoom, setMapZoom] = useState(7);
+
+  useEffect(() => {
+    // Set map center based on selected country
+    const country = countries.find(c => c.code === selectedCountry);
+    if (country) {
+      setMapCenter([country.lat, country.lng]);
+      setMapZoom(country.zoom);
+    }
+  }, [selectedCountry]);
 
   useEffect(() => {
     // Get user location
@@ -30,14 +45,24 @@ export default function HomePage() {
           });
         },
         () => {
-          // Default to Cayenne if geolocation fails
-          setUserLocation({ lat: 4.9372, lng: -52.3267 });
+          // Use country center if geolocation fails
+          const country = countries.find(c => c.code === selectedCountry);
+          if (country) {
+            setUserLocation({ lat: country.lat, lng: country.lng });
+          }
         }
       );
     }
     
     fetchData();
   }, []);
+
+  const handleCountrySelect = (country) => {
+    setSelectedCountry(country.code);
+    localStorage.setItem("selectedCountry", country.code);
+    setMapCenter([country.lat, country.lng]);
+    setMapZoom(country.zoom);
+  };
 
   const fetchData = async () => {
     try {
