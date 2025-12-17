@@ -47,11 +47,16 @@ Créer une plateforme de livraison collaborative pour la Guyane française perme
 ✅ Paramètres (langue, thème, notifications)
 ✅ Design mobile-first responsive
 
+## Fonctionnalités Ajoutées (Phase 2)
+✅ **Recherche d'adresse** avec autocomplétion OpenStreetMap Nominatim
+✅ **Upload photo produit** avec drag & drop
+✅ **Panneau de notifications** avec badge et panneau latéral
+✅ **Suivi GPS temps réel** avec page de tracking dédiée
+✅ **API de tracking** pour mise à jour position livreur
+
 ## Prochaines Étapes
-1. **Firebase Push Notifications** : Intégrer FCM pour notifications réelles
-2. **Authentification** : Ajouter Google OAuth / email
-3. **Suivi GPS temps réel** : Websockets pour tracking live
-4. **Upload photos** : Permettre d'ajouter des photos aux demandes
-5. **Vérification identité** : KYC pour les livreurs
-6. **Stripe Connect** : Paiements directs aux livreurs
-7. **Système d'assurance** : Intégrer une option assurance
+1. **Firebase Push Notifications** : Intégrer FCM pour notifications réelles sur mobile
+2. **Authentification** : Ajouter Google OAuth / email pour sécuriser les comptes
+3. **Vérification identité** : KYC pour les livreurs (confiance)
+4. **Stripe Connect** : Paiements directs aux livreurs (actuellement simulé)
+5. **Système d'assurance** : Option assurance pour livraisons lourdes
