@@ -699,6 +699,106 @@ async def get_tracking(request_id: str):
     }
 
 # =============================================================================
+# COMMUNITY FORUM
+# =============================================================================
+
+@api_router.post("/community/posts", response_model=CommunityPost)
+async def create_community_post(post: CommunityPostCreate):
+    """Create a new community post (carpool, availability, etc.)"""
+    new_post = CommunityPost(
+        post_type=post.post_type,
+        title=post.title,
+        content=post.content,
+        author_name=post.author_name,
+        author_phone=post.author_phone,
+        location=post.location.model_dump() if post.location else None,
+        destination=post.destination.model_dump() if post.destination else None,
+        date_info=post.date_info,
+        tags=post.tags or []
+    )
+    
+    doc = new_post.model_dump()
+    await db.community_posts.insert_one(doc)
+    
+    # Create notification for new community post
+    notification = Notification(
+        recipient_type="all",
+        title=f"Nouvelle annonce: {post.title}",
+        message=f"{post.author_name} - {post.content[:100]}",
+        type="community_post",
+        data={"post_id": new_post.id, "post_type": post.post_type}
+    )
+    await db.notifications.insert_one(notification.model_dump())
+    
+    return new_post
+
+@api_router.get("/community/posts", response_model=List[CommunityPost])
+async def get_community_posts(
+    post_type: Optional[str] = None,
+    active_only: bool = True,
+    limit: int = 50
+):
+    """Get community posts with optional filtering"""
+    query = {}
+    if post_type:
+        query["post_type"] = post_type
+    if active_only:
+        query["is_active"] = True
+    
+    posts = await db.community_posts.find(query, {"_id": 0}).sort("created_at", -1).limit(limit).to_list(limit)
+    return posts
+
+@api_router.get("/community/posts/{post_id}", response_model=CommunityPost)
+async def get_community_post(post_id: str):
+    """Get a specific community post"""
+    post = await db.community_posts.find_one({"id": post_id}, {"_id": 0})
+    if not post:
+        raise HTTPException(status_code=404, detail="Post not found")
+    return post
+
+@api_router.post("/community/posts/{post_id}/close")
+async def close_community_post(post_id: str):
+    """Close/deactivate a community post"""
+    await db.community_posts.update_one(
+        {"id": post_id},
+        {"$set": {"is_active": False}}
+    )
+    return {"message": "Post closed", "post_id": post_id}
+
+@api_router.post("/community/replies", response_model=CommunityReply)
+async def create_community_reply(reply: CommunityReplyCreate):
+    """Reply to a community post"""
+    # Check post exists
+    post = await db.community_posts.find_one({"id": reply.post_id})
+    if not post:
+        raise HTTPException(status_code=404, detail="Post not found")
+    
+    new_reply = CommunityReply(
+        post_id=reply.post_id,
+        author_name=reply.author_name,
+        content=reply.content,
+        author_phone=reply.author_phone
+    )
+    
+    await db.community_replies.insert_one(new_reply.model_dump())
+    
+    # Increment replies count
+    await db.community_posts.update_one(
+        {"id": reply.post_id},
+        {"$inc": {"replies_count": 1}}
+    )
+    
+    return new_reply
+
+@api_router.get("/community/replies/{post_id}", response_model=List[CommunityReply])
+async def get_community_replies(post_id: str):
+    """Get all replies for a community post"""
+    replies = await db.community_replies.find(
+        {"post_id": post_id}, {"_id": 0}
+    ).sort("created_at", 1).to_list(100)
+    return replies
+
+# =============================================================================
 # APP SETUP
 # =============================================================================
 
