@@ -173,9 +173,16 @@ export default function HomePage() {
             deliverers={deliverers}
             requests={requests}
             userLocation={userLocation}
+            center={mapCenter}
+            zoom={mapZoom}
             className="h-[300px] sm:h-[400px]"
           />
         </div>
+        {currentCountry && (
+          <p className="text-center text-sm text-muted-foreground mt-2">
+            📍 {currentCountry.flag} {currentCountry.name}
+          </p>
+        )}
       </section>
 
       {/* Request Types */}
