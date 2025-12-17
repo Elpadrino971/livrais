@@ -6,6 +6,7 @@ import { Plus, Truck, Package, ShoppingCart, ArrowRight } from "lucide-react";
 import Map from "../components/Map";
 import RequestCard from "../components/RequestCard";
 import DelivererCard from "../components/DelivererCard";
+import NotificationBell from "../components/NotificationBell";
 import { Button } from "../components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 
