@@ -9,6 +9,17 @@ import AuthScreen from '@/screens/AuthScreen';
 import HomeScreen from '@/screens/HomeScreen';
 import MapScreen from '@/screens/MapScreen';
 import ProfileScreen from '@/screens/ProfileScreen';
+import CreateRequestScreen from '@/screens/CreateRequestScreen';
+import RequestDetailsScreen from '@/screens/RequestDetailsScreen';
+import DeliveryTrackingScreen from '@/screens/DeliveryTrackingScreen';
+import RateDeliveryScreen from '@/screens/RateDeliveryScreen';
+import PricingGuideScreen from '@/screens/PricingGuideScreen';
+import DeliveryHistoryScreen from '@/screens/DeliveryHistoryScreen';
+import FavoritesScreen from '@/screens/FavoritesScreen';
+import FAQScreen from '@/screens/FAQScreen';
+import TermsOfServiceScreen from '@/screens/TermsOfServiceScreen';
+import PrivacyPolicyScreen from '@/screens/PrivacyPolicyScreen';
+import AboutScreen from '@/screens/AboutScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -36,6 +47,22 @@ function MainTabs() {
         options={{
           title: 'Carte',
           tabBarIcon: ({ color }) => <TabIcon icon="🗺️" color={color} />,
+        }}
+      />
+      <Tab.Screen
+        name="History"
+        component={DeliveryHistoryScreen}
+        options={{
+          title: 'Historique',
+          tabBarIcon: ({ color }) => <TabIcon icon="📦" color={color} />,
+        }}
+      />
+      <Tab.Screen
+        name="Favorites"
+        component={FavoritesScreen}
+        options={{
+          title: 'Favoris',
+          tabBarIcon: ({ color }) => <TabIcon icon="⭐" color={color} />,
         }}
       />
       <Tab.Screen
@@ -67,7 +94,53 @@ export default function RootNavigator() {
         {!isAuthenticated ? (
           <Stack.Screen name="Auth" component={AuthScreen} />
         ) : (
-          <Stack.Screen name="MainTabs" component={MainTabs} />
+          <>
+            <Stack.Screen name="MainTabs" component={MainTabs} />
+            {/* Delivery Flow Screens */}
+            <Stack.Screen
+              name="CreateRequest"
+              component={CreateRequestScreen}
+              options={{ presentation: 'modal' }}
+            />
+            <Stack.Screen
+              name="RequestDetails"
+              component={RequestDetailsScreen}
+            />
+            <Stack.Screen
+              name="DeliveryTracking"
+              component={DeliveryTrackingScreen}
+            />
+            <Stack.Screen
+              name="RateDelivery"
+              component={RateDeliveryScreen}
+              options={{ presentation: 'modal' }}
+            />
+            {/* Information Screens */}
+            <Stack.Screen
+              name="PricingGuide"
+              component={PricingGuideScreen}
+            />
+            <Stack.Screen
+              name="FAQ"
+              component={FAQScreen}
+            />
+            {/* Legal Screens */}
+            <Stack.Screen
+              name="TermsOfService"
+              component={TermsOfServiceScreen}
+              options={{ presentation: 'modal' }}
+            />
+            <Stack.Screen
+              name="PrivacyPolicy"
+              component={PrivacyPolicyScreen}
+              options={{ presentation: 'modal' }}
+            />
+            <Stack.Screen
+              name="About"
+              component={AboutScreen}
+              options={{ presentation: 'modal' }}
+            />
+          </>
         )}
       </Stack.Navigator>
     </NavigationContainer>
