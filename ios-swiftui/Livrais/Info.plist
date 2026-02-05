@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- App Information -->
+	<key>CFBundleName</key>
+	<string>Livrais</string>
+	<key>CFBundleDisplayName</key>
+	<string>Livrais</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+
+	<!-- Minimum iOS Version -->
+	<key>MinimumOSVersion</key>
+	<string>17.0</string>
+
+	<!-- Required Device Capabilities -->
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+		<string>location-services</string>
+		<string>gps</string>
+	</array>
+
+	<!-- Supported Interface Orientations (iPhone) -->
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+	</array>
+
+	<!-- Supported Interface Orientations (iPad) -->
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+
+	<!-- Status Bar Style -->
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+
+	<!-- App Uses Non-Exempt Encryption -->
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+
+	<!-- LOCATION PERMISSIONS -->
+
+	<!-- Location When In Use Usage -->
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Livrais utilise votre position pour trouver des demandes de livraison à proximité et afficher votre emplacement sur la carte.</string>
+
+	<!-- Location Always Usage -->
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Livrais a besoin d'accéder à votre position en arrière-plan pour suivre vos livraisons en temps réel et informer les clients de votre progression.</string>
+
+	<!-- Location Always and When In Use Usage -->
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Livrais a besoin d'accéder à votre position pour trouver des livraisons à proximité et suivre vos livraisons en temps réel, même en arrière-plan.</string>
+
+	<!-- Location Temporary Usage Description -->
+	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+	<dict>
+		<key>DeliveryTracking</key>
+		<string>Livrais a besoin de votre position pour suivre cette livraison</string>
+	</dict>
+
+	<!-- Background Modes -->
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+		<string>remote-notification</string>
+		<string>fetch</string>
+	</array>
+
+	<!-- CAMERA PERMISSIONS -->
+
+	<!-- Camera Usage -->
+	<key>NSCameraUsageDescription</key>
+	<string>Livrais a besoin d'accéder à votre appareil photo pour prendre des photos de votre profil ou des objets à livrer.</string>
+
+	<!-- Photo Library Usage -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Livrais a besoin d'accéder à vos photos pour définir votre photo de profil ou ajouter des photos d'objets à livrer.</string>
+
+	<!-- Photo Library Add Usage -->
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Livrais a besoin d'accéder à vos photos pour enregistrer des images.</string>
+
+	<!-- CONTACTS & COMMUNICATIONS -->
+
+	<!-- Contacts Usage -->
+	<key>NSContactsUsageDescription</key>
+	<string>Livrais peut accéder à vos contacts pour faciliter le partage de l'application avec vos amis.</string>
+
+	<!-- Microphone Usage (for future video chat feature) -->
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Livrais a besoin d'accéder à votre microphone pour les appels vocaux avec les autres utilisateurs.</string>
+
+	<!-- NOTIFICATIONS -->
+
+	<!-- User Notifications Usage -->
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>Livrais envoie des notifications pour vous informer de l'état de vos livraisons, des nouveaux messages et des opportunités de livraison.</string>
+
+	<!-- MOTION & FITNESS -->
+
+	<!-- Motion Usage (for delivery tracking) -->
+	<key>NSMotionUsageDescription</key>
+	<string>Livrais utilise les données de mouvement pour améliorer la précision du suivi de livraison.</string>
+
+	<!-- NETWORK & SECURITY -->
+
+	<!-- App Transport Security -->
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<false/>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
+
+	<!-- SCENE CONFIGURATION -->
+
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Default Configuration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+
+	<!-- LAUNCH SCREEN -->
+
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIImageName</key>
+		<string>LaunchIcon</string>
+		<key>UIColorName</key>
+		<string>Primary</string>
+	</dict>
+
+	<!-- APP ICON -->
+
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>AppIcon</string>
+			</array>
+			<key>UIPrerenderedIcon</key>
+			<false/>
+		</dict>
+	</dict>
+
+	<!-- URL SCHEMES (for deep linking) -->
+
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>gf.livrais</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>livrais</string>
+			</array>
+		</dict>
+	</array>
+
+	<!-- UNIVERSAL LINKS (for web-app integration) -->
+
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>applinks:livrais.gf</string>
+		<string>applinks:www.livrais.gf</string>
+	</array>
+
+	<!-- STRIPE CONFIGURATION -->
+
+	<key>StripePublishableKey</key>
+	<string>$(STRIPE_PUBLISHABLE_KEY)</string>
+
+	<!-- SUPABASE CONFIGURATION -->
+
+	<key>SupabaseURL</key>
+	<string>$(SUPABASE_URL)</string>
+	<key>SupabaseAnonKey</key>
+	<string>$(SUPABASE_ANON_KEY)</string>
+
+	<!-- APPEARANCE -->
+
+	<key>UIUserInterfaceStyle</key>
+	<string>Automatic</string>
+
+	<!-- CAPABILITIES -->
+
+	<!-- Apple Pay -->
+	<key>com.apple.developer.in-app-payments</key>
+	<array>
+		<string>merchant.gf.livrais</string>
+	</array>
+
+	<!-- Push Notifications -->
+	<key>aps-environment</key>
+	<string>development</string>
+</dict>
+</plist>
