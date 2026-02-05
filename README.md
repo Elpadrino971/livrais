@@ -4,6 +4,21 @@
 
 Livrais met en relation des personnes souhaitant envoyer ou recevoir des colis avec des livreurs indépendants locaux. Conçu spécifiquement pour répondre aux défis logistiques de la Guyane.
 
+## 📱 Versions disponibles
+
+Ce projet propose **deux versions mobiles complètes** :
+
+1. **React Native + Expo** (`/mobile`) - Version cross-platform (iOS + Android)
+   - Architecture complète avec tous les features
+   - Documentation complète ci-dessous
+
+2. **iOS SwiftUI Native** (`/ios-swiftui`) - Version iOS native
+   - Application 100% SwiftUI avec iOS 17+
+   - Architecture MVVM moderne avec @Observable
+   - Voir [ios-swiftui/README.md](./ios-swiftui/README.md) pour la documentation iOS
+
+> **Note :** Les deux versions utilisent le même backend Supabase et sont fonctionnellement équivalentes.
+
 ## 🌟 Caractéristiques principales
 
 ### Pour les clients
@@ -226,6 +241,7 @@ livrais/
 - [x] Historique
 - [x] Favoris
 - [x] FAQ et support
+- [x] **Version iOS SwiftUI native** (100% complete)
 
 ### 🚧 Phase 2 - UX (Q2 2025)
 - [ ] Chat en temps réel
@@ -253,7 +269,7 @@ Les contributions sont les bienvenues ! Veuillez suivre ces étapes :
 
 ## 📄 License
 
-Copyright © 2024 Livrais. Tous droits réservés.
+Copyright © 2026 Livrais. Tous droits réservés.
 
 ## 📞 Support
 
